@@ -122,18 +122,20 @@
 </table>
 <hr/>
 
-<c:if test="${ !empty search.priceDESC}">  <!-- 가격 정렬 기능을 클릭한 경우 --> 
+ <!-- 가격 정렬 기능을 클릭한 경우 -->
+<c:if test="${ !empty search.priceDESC}">  
+	<!-- 입력한 조건 box에 따라 query string 동적 구현 -->
 	<c:if test="${search.priceDESC == 0 }">
-		<span style="font-size: 12px;"><a href="?menu=${param.menu}&priceDESC=0"><strong>낮은가격순</strong></a></span>
-		<span style="font-size: 12px;"><a href="?menu=${param.menu}&priceDESC=1">높은가격순</a></span>
+		<span style="font-size: 12px;"><a href="?menu=${param.menu}&priceDESC=0<c:if test='${ !empty search.searchKeyword }'>&searchKeyword=${search.searchKeyword }</c:if><c:if test='${ !empty search.priceMin }'>&priceMin=${search.priceMin }</c:if><c:if test='${ !empty search.priceMax }'>&priceMax=${search.priceMax }</c:if>"><strong>낮은가격순</strong></a></span>
+		<span style="font-size: 12px;"><a href="?menu=${param.menu}&priceDESC=1<c:if test='${ !empty search.searchKeyword }'>&searchKeyword=${search.searchKeyword }</c:if><c:if test='${ !empty search.priceMin }'>&priceMin=${search.priceMin }</c:if><c:if test='${ !empty search.priceMax }'>&priceMax=${search.priceMax }</c:if>">높은가격순</a></span>
 	</c:if><c:if test="${search.priceDESC == 1 }">
-		<span style="font-size: 12px;"><a href="?menu=${param.menu}&priceDESC=0">낮은가격순</a></span>
-		<span style="font-size: 12px;"><a href="?menu=${param.menu}&priceDESC=1"><strong>높은가격순</strong></a></span>
+		<span style="font-size: 12px;"><a href="?menu=${param.menu}&priceDESC=0<c:if test='${ !empty search.searchKeyword }'>&searchKeyword=${search.searchKeyword }</c:if><c:if test='${ !empty search.priceMin }'>&priceMin=${search.priceMin }</c:if><c:if test='${ !empty search.priceMax }'>&priceMax=${search.priceMax }</c:if>">낮은가격순</a></span>
+		<span style="font-size: 12px;"><a href="?menu=${param.menu}&priceDESC=1<c:if test='${ !empty search.searchKeyword }'>&searchKeyword=${search.searchKeyword }</c:if><c:if test='${ !empty search.priceMin }'>&priceMin=${search.priceMin }</c:if><c:if test='${ !empty search.priceMax }'>&priceMax=${search.priceMax }</c:if>"><strong>높은가격순</strong></a></span>
 	</c:if>
 </c:if><c:if test="${empty search.priceDESC}"> <!-- 디폴트 -->
-	<span style="font-size: 12px;"><a href="?menu=${param.menu}&priceDESC=0">낮은가격순</a></span>
-	<span style="font-size: 12px;"><a href="?menu=${param.menu}&priceDESC=1">높은가격순</a></span>
-</c:if>
+	<span style="font-size: 12px;"><a href="?menu=${param.menu}&priceDESC=0<c:if test='${ !empty search.searchKeyword }'>&searchKeyword=${search.searchKeyword }</c:if><c:if test='${ !empty search.priceMin }'>&priceMin=${search.priceMin }</c:if><c:if test='${ !empty search.priceMax }'>&priceMax=${search.priceMax }</c:if>">낮은가격순</a></span>
+	<span style="font-size: 12px;"><a href="?menu=${param.menu}&priceDESC=1<c:if test='${ !empty search.searchKeyword }'>&searchKeyword=${search.searchKeyword }</c:if><c:if test='${ !empty search.priceMin }'>&priceMin=${search.priceMin }</c:if><c:if test='${ !empty search.priceMax }'>&priceMax=${search.priceMax }</c:if>">높은가격순</a></span>
+</c:if> 
 
  
 <hr/>
