@@ -35,7 +35,7 @@
 		 	$( ".Depth03:contains('개인정보조회')" ).on("click" , function() {
 				//Debug..
 				//alert(  $( ".Depth03:contains('개인정보조회')" ).html() );
-				$(window.parent.frames["rightFrame"].document.location).attr("href","../user/getUser?userId=${user.userId}");
+				$(window.parent.frames["rightFrame"].document.location).attr("href","/user/getUser?userId=${user.userId}");
 			}).on('mouseover', function() {
 				 $(this).css('cursor', 'pointer');
 			 }).on('mouseout', function() {

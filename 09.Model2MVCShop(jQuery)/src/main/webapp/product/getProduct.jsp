@@ -9,6 +9,31 @@
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 
 <title>상품 상세 조회</title>
+
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+<script  type="text/javascript">
+
+	$( function() {
+		
+		$('.ct_btn01:contains("구매")').on('click', function() {
+			$(window.parent.frames["rightFrame"].document.location).attr('href', '/purchase/addPurchase?prodNo=${product.prodNo}');  // JSP는 적용 가능. 하지만 JSTL은 적용 불가...
+		}).on('mouseover', function() {
+			$(this).css('cursor', 'pointer');
+		}).on('mouseout', function() {
+			$(this).css('cursor', 'default');
+		});
+		
+		$('.ct_btn01:contains("이전")').on('click', function() {
+			$(window.parent.frames["rightFrame"].document.location).attr('href', 'javascript:history.go(-1)');  // 반드시 'javascript:'를 명시해주어야 한다.
+		}).on('mouseover', function() {
+			$(this).css('cursor', 'pointer');
+		}).on('mouseout', function() {
+			$(this).css('cursor', 'default');
+		});
+	});
+
+</script>
+
 </head>
 
 <body bgcolor="#ffffff" text="#000000">
@@ -120,7 +145,8 @@
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-						<a href="/purchase/addPurchaseView?prodNo=${product.prodNo }">구매</a>
+						<!-- <a href="/purchase/addPurchaseView?prodNo=${product.prodNo }">구매</a>  -->
+						구매
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23">
@@ -132,7 +158,8 @@
 					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
 				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-					<a href="javascript:history.go(-1)">이전</a>
+					<!-- <a href="javascript:history.go(-1)">이전</a>  -->
+					이전 
 				</td>
 				<td width="14" height="23">
 					<img src="/images/ct_btnbg03.gif" width="14" height="23">
@@ -145,4 +172,4 @@
 </table>
 
 </body>
-</html>
+</html> 

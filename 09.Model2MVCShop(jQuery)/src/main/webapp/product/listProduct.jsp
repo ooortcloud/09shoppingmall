@@ -10,7 +10,7 @@
 <title>상품 관리</title>
 
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
-
+ 
 <script type="text/javascript">
 	function fncGetProductList(currentPage) {
 		console.log("currentPage = " + currentPage);
@@ -41,6 +41,15 @@
 		fncGetProductList(document.getElementById("currentPage").value );	
 	}
 
+</script>
+
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+	$( function() {  
+		
+		$('a').css('text-decoration', 'none');   
+	});
 </script>
 </head>
 
@@ -111,7 +120,7 @@
 		</td>
 	</tr>
 </table>
-
+<hr/>
 
 <c:if test="${ !empty search.priceDESC}">  <!-- 가격 정렬 기능을 클릭한 경우 --> 
 	<c:if test="${search.priceDESC == 0 }">
@@ -157,7 +166,7 @@
 				<c:set var="no" value="${ no-1 }" />
 				<td></td>
 				<td align="left">
-					<a href="/product/getProduct?prodNo=${product.prodNo }&menu=${param.menu}">${product.prodName }</a>
+					<a href="/product/getProduct?prodNo=${product.prodNo }&menu=${param.menu}"><strong>${product.prodName }</strong></a>
 				</td>
 				<td></td>
 				<td align="left">${product.price }</td>
@@ -174,7 +183,8 @@
 						<c:if test="${param.menu == 'manage' }">
 							<c:choose>
 								<c:when test="${presentState == 1 }">
-									구매완료 <a href='/product/updateTranCodeByProd?prodNo=${product.prodNo }&tranCode=2'> client에게 배송하기</a>
+									<!-- <span id="doDelivary">client에게 배송하기</span>  --> 
+									<a id="doDelivery" href='/purchase/updateTranCodeByProd?prodNo=${product.prodNo }&tranCode=2'><strong> client에게 배송하기</strong></a> 
 								</c:when><c:when test="${presentState == 2 }">
 									배송 중	
 								</c:when><c:when test="${presentState == 3 }">

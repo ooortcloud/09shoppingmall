@@ -54,6 +54,7 @@
 									FROM transaction
 									WHERE buyer_id=#{buyerId} ) origin ) vt
 		WHERE vt.n BETWEEN #{search.startRowNum} AND #{search.endRowNum}
+		ORDER BY tran_no DESC
 	</select>
 	
 	<!-- 리턴 결과가 그룹함수라면, 디폴트 resultType이 Map인 것으로 추정됨. 따라서 primitive type을 의도한다면 resultType을 명시해줘야 함 -->

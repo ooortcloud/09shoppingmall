@@ -15,6 +15,32 @@
 	}
 
 </script>
+
+<!-- 
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	
+	$( function() {
+
+			$('#modifier1').on('click', function() {
+				$(window.parent.frame['rightFrame'].document.location).attr('href', '/purchase/getPurchase?tranNo=${purchase.tranNo }');
+			}).css('color', 'blue').on('mouseover', function() {
+				$(this).css('cursor', 'pointer');
+			}).on('mouseout', function() {
+				$(this).css('cursor', 'default');
+			});
+
+			$('#modifier2').on('click', function() {
+				$(window.parent.frame['rightFrame'].document.location).attr('href', '/purchase/updateTranCode?tranNo=${purchase.tranNo }&tranCode=3');
+			}).css('color', 'blue').on('mouseover', function() {
+				$(this).css('cursor', 'pointer');
+			}).on('mouseout', function() {
+				$(this).css('cursor', 'default');
+			});
+	});
+</script>
+ -->
+ 
 </head>
 
 <body bgcolor="#ffffff" text="#000000">
@@ -74,7 +100,7 @@
 			</td>
 			<td></td>
 			<td align="left">
-				<a href="/product/getProduct?prodNo=${purchase.purchaseProd.prodNo }&menu=search">${purchase.purchaseProd.prodNo }</a>
+				<a href="/product/getProduct?prodNo=${purchase.purchaseProd.prodNo }&menu=search" style="text-decoration:none"><strong>${purchase.purchaseProd.prodNo }</strong></a>
 			</td>
 			<td></td>
 			<td align="left">${purchase.purchaseProd.prodName }</td>
@@ -93,15 +119,18 @@
 			</td>
 			<td></td>
 			<td align="left">
+				  
 				<c:if test="${purchase.tranCode == 1 }">
-						<a href="/purchase/getPurchase?tranNo=${purchase.tranNo }">구매 정보 확인 및 수정</a>
+					<!-- <span id="modifier1">구매 정보 확인 및 수정</span>  -->
+					<a href="/purchase/getPurchase?tranNo=${purchase.tranNo }" style="text-decoration: none;"><strong>구매 정보 확인 및 수정</strong></a> 
 				</c:if><c:if test="${purchase.tranCode == 2 }">
-						<a href="/purchase/updateTranCode?tranNo=${purchase.tranNo }&tranCode=3">물건 도착 알리기</a>
+					<!-- <span id="modifier2">물건 도착 알리기</span>  -->
+					<a href="/purchase/updateTranCode?tranNo=${purchase.tranNo }&tranCode=3" style="text-decoration: none;"><strong>물건 도착 알리기</strong></a>   
 				</c:if>
 			</td>
 		</tr>
 	</c:forEach>
-</table>
+</table>  
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 	<tr>

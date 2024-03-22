@@ -59,7 +59,7 @@
 									<if test="priceDESC == 0">ORDER BY p.price ASC</if>
 									<if test="priceDESC == 1">ORDER BY p.price DESC</if>
 								</if><if test="priceDESC == null">
-									ORDER BY p.prod_no
+									ORDER BY p.prod_no DESC
 								</if>
 							</where>
 						) origin

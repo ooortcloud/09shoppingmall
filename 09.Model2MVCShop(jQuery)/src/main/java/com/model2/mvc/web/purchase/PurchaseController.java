@@ -43,7 +43,6 @@ public class PurchaseController {
 		// TODO Auto-generated constructor stub
 	}
 
-	// 어노테이션만 달라도 overloading이 가능한듯
 	@GetMapping("/addPurchase")
 	public ModelAndView addPurchase(@RequestParam Integer prodNo, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView("forward:/purchase/addPurchaseView.jsp");
@@ -98,7 +97,7 @@ public class PurchaseController {
 		if( (search.getCurrentPage() > myPage.getPageUnit() ) && !CommonUtil.null2str(search.getSearchKeyword()).isEmpty() )
 			myPage.setBeginUnitPage(1);
 		
-		mv.addObject("map", resultMap);
+		mv.addObject("list", resultMap.get("list"));
 		mv.addObject("resultPage", myPage);
 		mv.addObject("title", "purchase");
 		

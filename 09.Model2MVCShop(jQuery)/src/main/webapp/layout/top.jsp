@@ -9,9 +9,9 @@
 <head>
 	<meta charset="EUC-KR">
 	
-	<title>Model2 MVC Shop</title>
-	
 	<link href="/css/left.css" rel="stylesheet" type="text/css">
+	
+	<title>Model2 MVC Shop</title> 
 	
 	<!-- CDN(Content Delivery Network) 호스트 사용 -->
 	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -44,10 +44,19 @@
 			 }).on('mouseout', function() {
 				$(this).css('cursor', 'default');   
 			 }); 
+			
+			  
+			$('td h2:contains("Model2")').on('click', function() {
+				$(window.parent.document.location).attr("href","/index.jsp");  
+			}).on('mouseover', function() {
+				 $(this).css('cursor', 'pointer');
+			 }).on('mouseout', function() {
+				$(this).css('cursor', 'default');   
+			 }); 
 		});	
 		 
 	</script>		
-	
+		
 </head>
 
 <body topmargin="0" leftmargin="0">

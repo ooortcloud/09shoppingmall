@@ -12,8 +12,9 @@
 <script type="text/javascript" src="../javascript/calendar.js">
 </script>
 
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script type="text/javascript">
-
+  
 function fncUpdateProduct(){
 		//Form 유효성 검증
 	 	var name = document.detailForm.prodName.value;
@@ -42,13 +43,62 @@ function fncUpdateProduct(){
 		document.detailForm.submit();
 	}
 
+/* GET 방식으로 DELETE 처리를 하지 않겠다.
 function deleteProduct() {
 	let result = confirm("정말로 해당 상품을 제거하시겠습니까?");
 	
 	if(result === true)
 		location.href="/product/deleteProduct?prodNo=${product.prodNo }";
 }
+*/
 
+	
+	$( function() {
+		  
+		$('.ct_btn01:contains("수정")').on('click', function() {
+			$(window.parent.frames["rightFrame"].document.location).attr('href',"javascript:fncUpdateProduct()"	); 
+		}).on('mouseover', function() {
+			$(this).css('cursor', 'pointer');
+		}).on('mouseout', function() {
+			$(this).css('cursor', 'default');
+		});  
+		
+		/* ajax 넣으면 jQuery 비활성화됨... 이 부분은 ajax 넣으면 해결될 것이라고 기대하고 있다...
+		$('.ct_btn01:contains("삭제")').on('click', function() {
+			
+			let result = confirm("정말로 해당 상품을 제거하시겠습니까?");
+			
+			if (result === true) {  
+				
+				$.ajax({
+					url : "/product/deleteProduct",
+					type = "POST",
+					data = { prodNo : ${product.prodNo} },
+					success : function(data){
+						console.log('상품 제거에 성공하였습니다!');  
+						self.location = '/product/listProduct?menu=manage';
+					},
+					error : function(xhr, status, error){
+						console.log('상품 제거 실패...'); 
+						self.location = '/product/listProduct?menu=manage';	
+					}
+				});
+			}
+		}).on('mouseover', function() {
+			$(this).css('cursor', 'pointer');
+		}).on('mouseout', function() {
+			$(this).css('cursor', 'default');
+		});  
+		*/
+		
+		$('.ct_btn01:contains("취소")').on('click', function() {
+			$(window.parent.frames["rightFrame"].document.location).attr('href', 'javascript:history.go(-1)'); 
+		}).on('mouseover', function() {
+			$(this).css('cursor', 'pointer');
+		}).on('mouseout', function() {
+			$(this).css('cursor', 'default');
+		});  
+	});  
 </script>
 </head>
 
@@ -165,7 +215,8 @@ function deleteProduct() {
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01"	style="padding-top: 3px;">
-						<a href="javascript:fncUpdateProduct();">수정</a>
+						<!-- <a href="javascript:fncUpdateProduct();">수정</a>  -->
+						수정
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
@@ -176,7 +227,8 @@ function deleteProduct() {
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
 						<!-- <a href="/product/deleteProduct?prodNo=${product.prodNo }">삭제</a> -->
-						<a href="javascript:deleteProduct();">삭제</a>						
+						<!-- <a href="javascript:deleteProduct();">삭제</a>   -->				
+						삭제		
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>   
@@ -186,7 +238,8 @@ function deleteProduct() {
 						<img src="/images/ct_btnbg01.gif"width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-						<a href="javascript:history.go(-1)">취소</a>
+						<!-- <a href="javascript:history.go(-1)">취소</a>  -->
+						취소
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>

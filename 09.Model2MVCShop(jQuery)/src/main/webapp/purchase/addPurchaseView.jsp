@@ -14,7 +14,9 @@
 <script type="text/javascript" src="../javascript/calendar.js">
 </script>
 
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 <script type="text/javascript">
+
 	function checkNull() {
 		let divyDate = document.querySelector('input[name="divyDate"]').value;
 		if(divyDate === '') {
@@ -24,10 +26,31 @@
 		return true;
 	}
 	
+	
 	function fncAddPurchase() {
 		if (checkNull() === true)
 			document.addPurchase.submit();
 	}
+
+	
+	$( function() {  
+		 
+		$('.ct_btn01:contains("구매")').on('click', function() {
+			$(window.parent.frames["rightFrame"].document.location).attr('href', 'javascript:fncAddPurchase()');
+		}).on('mouseover', function() {
+			$(this).css('cursor', 'pointer');
+		}).on('mouseout', function() {
+			$(this).css('cursor', 'default');
+		});
+		
+		$('.ct_btn01:contains("취소")').on('click', function() {
+			$(window.parent.frames["rightFrame"].document.location).attr('href', 'javascript:history.go(-1)');  // 반드시 'javascript:'를 명시해주어야 한다.
+		}).on('mouseover', function() {
+			$(this).css('cursor', 'pointer');
+		}).on('mouseout', function() {
+			$(this).css('cursor', 'default');
+		});
+	});
 
 </script>
 </head>
@@ -216,7 +239,8 @@
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-						<a href="javascript:fncAddPurchase();">구매</a>
+						<!-- <a href="javascript:fncAddPurchase();">구매</a>  -->
+						구매
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
@@ -226,7 +250,8 @@
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-						<a href="javascript:history.go(-1)">취소</a>
+						<!-- <a href="javascript:history.go(-1)">취소</a>  -->
+						취소
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>

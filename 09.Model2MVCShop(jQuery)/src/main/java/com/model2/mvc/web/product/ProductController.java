@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -42,7 +43,12 @@ public class ProductController {
 		System.out.println("각종 Controller Bean load...");
 	}
 	
-	// @ModelAttribute는 HttpServletRequest의 getParameter()를 활용하여 auto binding을 해주는 annotation이다.
+	/*
+	 *  @ModelAttribute는 HttpServletRequest의 getParameter()를 활용하여 auto binding을 해주는 annotation이다.
+	 *  	query parameter?
+	 *  	GET :: url 내의 query string
+	 *  	POST :: body 내의 query string  
+	 */
 	@PostMapping("/addProduct")
 	public String addProduct(@ModelAttribute Product  product, Model model) throws Exception {
 		String[] temp = product.getManuDate().split("-");
@@ -189,7 +195,7 @@ public class ProductController {
 	}
 	
 	@GetMapping("/deleteProduct")
-	public String deleteProduct(@RequestParam Integer prodNo) throws Exception {
+	public String deleteProduct(@RequestBody Integer prodNo) throws Exception {
 		service.deleteProduct(prodNo);
 		return "forward:/product/listProduct?menu=manage";
 	}

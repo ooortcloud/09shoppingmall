@@ -10,6 +10,7 @@
  
 <title>구매정보 수정</title>
 
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	function checkNull() {
 		let divyDate = document.querySelector('input[name="divyDate"]').value;
@@ -26,6 +27,25 @@
 		}
 			
 	}
+	
+	$( function() {
+		
+		$('.ct_btn01:contains("수정")').on('click', function() {
+			$(window.parent.frames['rightFrame'].document.location).attr('href', 'javascript:fncUpdatePurchase()');
+		}).on('mouseover', function() {
+			$(this).css('cursor', 'pointer');
+		}).on('mouseout', function() {
+			$(this).css('cursor', 'default');
+		});
+		
+		$('.ct_btn01:contains("취소")').on('click', function() {
+			$(window.parent.frames['rightFrame'].document.location).attr('href', 'javascript:history.go(-1)');
+		}).on('mouseover', function() {
+			$(this).css('cursor', 'pointer');
+		}).on('mouseout', function() {
+			$(this).css('cursor', 'default');
+		});
+	});
 </script>
 
 <script type="text/javascript" src="../javascript/calendar.js">
@@ -125,10 +145,10 @@
 		<td width="104" class="ct_write">구매요청사항</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input 	type="text" name="receiverRequest" 	class="ct_input_g" style="width: 100px; height: 19px" 
-							maxLength="20" value="${purchase.divyRequest }" />
+			<input 	type="text" name="divyRequest" 	class="ct_input_g" style="width: 100px; height: 19px" 
+							maxLength="20" value="${purchase.divyRequest }" />  
 		</td>
-	</tr>
+	</tr>  
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
@@ -157,8 +177,8 @@
 					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
 				<td background="/images/ct_btnbg02.gif" class="ct_btn01"	style="padding-top: 3px;">
-					<!-- <input type="submit" value="수정"/> -->
-					<a href="javascript:fncUpdatePurchase();">수정</a>
+					<!-- <a href="javascript:fncUpdatePurchase();">수정</a>  -->
+					수정
 				</td>
 				<td width="14" height="23">
 					<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
@@ -168,7 +188,8 @@
 					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
 				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-					<a href="javascript:history.go(-1)">취소</a>
+					<!-- <a href="javascript:history.go(-1)">취소</a>  -->
+					취소
 				</td>
 				<td width="14" height="23">
 					<img src="/images/ct_btnbg03.gif" width="14" height="23"/>

@@ -5,9 +5,32 @@
 
 <html>
 <head>
-<title>구매상세조회</title>
+	<title>구매상세조회</title>
 
-<link rel="stylesheet" href="/css/admin.css" type="text/css">
+	<link rel="stylesheet" href="/css/admin.css" type="text/css">
+
+	<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		
+		$( function() {
+			
+			$('.ct_btn01:contains("수정")').on('click', function() {
+				$(window.parent.frames["rightFrame"].document.location).attr('href', '/purchase/updatePurchase?tranNo=${purchase.tranNo}');
+			}).on('mouseover', function() {
+				$(this).css('cursor', 'pointer');
+			}).on('mouseout', function() {
+				$(this).css('cursor', 'default');
+			});
+			
+			$('.ct_btn01:contains("확인")').on('click', function() {
+				$(window.parent.frames["rightFrame"].document.location).attr('href', 'javascript:history.go(-1)');
+			}).on('mouseover', function() {
+				$(this).css('cursor', 'pointer');
+			}).on('mouseout', function() {
+				$(this).css('cursor', 'default');
+			});
+		});
+	</script>
 
 </head>
 
@@ -139,7 +162,8 @@
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01"	style="padding-top: 3px;">
-						<a href="/purchase/updatePurchase?tranNo=${purchase.tranNo }">수정</a> 
+						<!-- <a href="/purchase/updatePurchase?tranNo=${purchase.tranNo }">수정</a>  --> 
+						수정
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
@@ -149,7 +173,8 @@
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01"	style="padding-top: 3px;">
-						<a href="javascript:history.go(-1);">확인</a>
+						<!-- <a href="javascript:history.go(-1);">확인</a>  -->
+						확인
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif"width="14" height="23"/>
 					</td>

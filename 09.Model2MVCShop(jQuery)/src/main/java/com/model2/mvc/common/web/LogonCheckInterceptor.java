@@ -43,32 +43,40 @@ public class LogonCheckInterceptor extends HandlerInterceptorAdapter {
 		//==> 로그인한 회원이라면...
 		if(   user != null   )  {
 			//==> 로그인 상태에서 접근 불가 URI
-			String uri = request.getRequestURI();
+			String uri = request.getRequestURI();  // query string은 제외
 			
-			if(		uri.indexOf("addUser") != -1 ||	uri.indexOf("login") != -1 		|| 
+			if(		uri.indexOf("addUserView") != -1 	|| 	uri.indexOf("addUser") != -1 || 
+					uri.indexOf("loginView") != -1 			||	uri.indexOf("login") != -1 		|| 
 					uri.indexOf("checkDuplication") != -1 ){
 				request.getRequestDispatcher("/index.jsp").forward(request, response);
-				System.out.println("[ 로그인 상태.. 로그인 후 불필요 한 요구.... ]");
+				System.out.println("[ 이미 로그인한 상태입니다...]");
 				System.out.println("[ LogonCheckInterceptor end........]\n");
 				return false;
 			}
 			
-			System.out.println("[ 로그인 상태 ... ]");
+			System.out.println("[ 현재 로그인 중인 회원입니다. ]");
 			System.out.println("[ LogonCheckInterceptor end........]\n");
 			return true;
-		}else{ //==> 미 로그인한 화원이라면...
+		}else{ //==> 미 로그인한 회원이라면...
 			//==> 로그인 시도 중.....
 			String uri = request.getRequestURI();
-			
-			if(		uri.indexOf("addUser") != -1 ||	uri.indexOf("login") != -1 		|| 
+			System.out.println("uri = " + uri);
+			if(		uri.indexOf("addUserView") != -1 	|| 	uri.indexOf("addUser") != -1 || 
+					uri.indexOf("loginView") != -1 			||	uri.indexOf("login") != -1 		|| 
 					uri.indexOf("checkDuplication") != -1 ){
-				System.out.println("[ 로그 시도 상태 .... ]");
+				System.out.println("[ 로그인 시도 중 .... ]"); 
 				System.out.println("[ LogonCheckInterceptor end........]\n");
 				return true;
 			}
+			    
+			if ( ( uri.indexOf("listProduct") != -1 || uri.indexOf("getProduct") != -1 ) && request.getParameter("menu").equals("search") ) {
+				System.out.println("[비로그인 회원도 상품 조회가 가능합니다.]");
+				// System.out.println("currentPage = "+request.getParameter("currentPage"));
+				return true;
+			}
 			
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
-			System.out.println("[ 로그인 이전 ... ]");
+			request.getRequestDispatcher("/user/loginView.jsp").forward(request, response);
+			System.out.println("[ 아직 로그인하지 않았습니다 ... ]");
 			System.out.println("[ LogonCheckInterceptor end........]\n");
 			return false;
 		}
