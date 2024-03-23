@@ -197,8 +197,8 @@
 							재고 없음
 						</c:if>
 					</c:if>
+				</td>
 				</c:forEach>
-			</td>
 		<td></td>
 	</tr>
 	<tr>

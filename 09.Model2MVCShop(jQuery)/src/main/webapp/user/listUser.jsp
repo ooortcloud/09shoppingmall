@@ -35,6 +35,10 @@
 				//Debug..
 				//alert(  $( "td.ct_btn01:contains('검색')" ).html() );
 				fncGetUserList(1);
+			}).on('mouseover', function() {
+				$(this).css('cursor', 'pointer');
+			}).on('mouseout', function() {
+				$(this).css('cursor', 'default');
 			});
 			
 			
@@ -45,6 +49,10 @@
 					//Debug..
 					//alert(  $( this ).text().trim() );
 					self.location ="/user/getUser?userId="+$(this).text().trim();
+			}).on('mouseover', function() {
+				$(this).css('cursor', 'pointer');
+			}).on('mouseout', function() {
+				$(this).css('cursor', 'default');
 			});
 			
 			//==> UI 수정 추가부분  :  userId LINK Event End User 에게 보일수 있도록 
